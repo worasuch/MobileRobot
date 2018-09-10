@@ -52,14 +52,35 @@ void loop() {
     Serial.print(i);
     Serial.print(" ");
     Serial.println(ledStatus);
-    mg.publish("/dataTag",(char)i);
-    mg.publish("/ledStatus/one", !ledStatus);
-    mg.publish("/ledStatus/two", !ledStatus);
-    mg.publish("/ledStatus/three", !ledStatus);
-    mg.writeFeed("HappyIoTFeed", "manCount:" + (char)i);
+    mg.publish("/dataTag",(char)i); delay(10);
+    mg.publish("/ledStatus/one", !ledStatus); delay(10);
+    mg.publish("/ledStatus/two", !ledStatus); delay(10);
+    mg.publish("/ledStatus/three", !ledStatus); delay(10);
+    
+    if(i == 0)
+    {
+      mg.writeFeed("HappyIoTFeed", "manCount:10.00"); 
+    }
+    else if(i == 1)
+    {
+      mg.writeFeed("HappyIoTFeed", "manCount:2.00"); 
+    }
+    else if(i == 2)
+    {
+      mg.writeFeed("HappyIoTFeed", "manCount:4.00"); 
+    }
+    else if(i == 3)
+    {
+      mg.writeFeed("HappyIoTFeed", "manCount:6.00"); 
+    }
+    else if(i == 4)
+    {
+      mg.writeFeed("HappyIoTFeed", "manCount:8.00"); 
+    }
+    
     i++;
     i = i%5;
     ledStatus = !ledStatus;
     mg.loop();
-    delay(5000);
+    delay(20000);
 }
