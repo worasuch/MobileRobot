@@ -11,8 +11,8 @@
 #include "MicrogearNB.h"
 
 #define APPID   "TheBlackBox"
-#define KEY     ""
-#define SECRET  ""
+#define KEY     "SzQ4HHND2ycUreb"
+#define SECRET  "GvLCYNOnVaN3xVaJBaz5IHs3v"
 
 BC95UDP client;
 Microgear mg(&client);
