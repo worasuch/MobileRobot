@@ -11,7 +11,6 @@ IBT-2 pins 3 (R_EN), 4 (L_EN), 7 (VCC) to Arduino 5V pin
 IBT-2 pin 8 (GND) to Arduino GND
 IBT-2 pins 5 (R_IS) and 6 (L_IS) not connected
 */
- 
 int RPWM_Output1 = 5; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
 int LPWM_Output1 = 6; // Arduino PWM output pin 6; connect to IBT-2 pin 2 (LPWM)
 int RPWM_Output2 = 7; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
@@ -25,7 +24,6 @@ void setup()
   pinMode(RPWM_Output2, OUTPUT);
   pinMode(LPWM_Output2, OUTPUT);
 }
- 
 void loop()
 {
    if (Serial.available())                        //Make sure all the frame is received
@@ -36,18 +34,18 @@ void loop()
     if (val == 'f')
     {
       Serial.println("forward");
-      analogWrite(LPWM_Output1, 150);
+      analogWrite(LPWM_Output1, 50);
       analogWrite(RPWM_Output1, 0);
-      analogWrite(LPWM_Output2, 140);
+      analogWrite(LPWM_Output2, 35);
       analogWrite(RPWM_Output2, 0);
     }
     else if(val == 'b')
     {
       Serial.println("back");
       analogWrite(LPWM_Output1, 0);
-      analogWrite(RPWM_Output1, 150);
+      analogWrite(RPWM_Output1, 50);
       analogWrite(LPWM_Output2, 0);
-      analogWrite(RPWM_Output2, 140);
+      analogWrite(RPWM_Output2, 35);
     }
     else if(val == 's')
     {
