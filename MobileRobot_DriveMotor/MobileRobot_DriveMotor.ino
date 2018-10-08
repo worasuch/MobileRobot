@@ -11,6 +11,7 @@ IBT-2 pins 3 (R_EN), 4 (L_EN), 7 (VCC) to Arduino 5V pin
 IBT-2 pin 8 (GND) to Arduino GND
 IBT-2 pins 5 (R_IS) and 6 (L_IS) not connected
 */
+
 int RPWM_Output1 = 5; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
 int LPWM_Output1 = 6; // Arduino PWM output pin 6; connect to IBT-2 pin 2 (LPWM)
 int RPWM_Output2 = 7; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
