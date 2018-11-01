@@ -14,12 +14,15 @@ IBT-2 pins 5 (R_IS) and 6 (L_IS) not connected
 
 int RPWM_Output1 = 5; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
 int LPWM_Output1 = 6; // Arduino PWM output pin 6; connect to IBT-2 pin 2 (LPWM)
-int RPWM_Output2 = 7; // Arduino PWM output pin 5; connect to IBT-2 pin 1 (RPWM)
-int LPWM_Output2 = 8; // Arduino PWM output pin 6; connect to IBT-2 pin 2 (LPWM)
- 
+int RPWM_Output2 = 7; // Arduino PWM output pin 7; connect to IBT-2 pin 1 (RPWM)
+int LPWM_Output2 = 8; // Arduino PWM output pin 8; connect to IBT-2 pin 2 (LPWM)
+int r = 0;
+
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  pinMode(2, INPUT_PULLUP); //encoder pins
+  attachInterrupt(digitalPinToInterrupt(2), detect, RISING);//interrupt pins for encoder
   pinMode(RPWM_Output1, OUTPUT);
   pinMode(LPWM_Output1, OUTPUT);
   pinMode(RPWM_Output2, OUTPUT);
@@ -27,7 +30,8 @@ void setup()
 }
 void loop()
 {
-   if (Serial.available())                        //Make sure all the frame is received
+/*  
+  if (Serial.available())                        //Make sure all the frame is received
   {
     char val = Serial.read();
     // sensor value is in the range 0 to 1023
@@ -35,7 +39,7 @@ void loop()
     if (val == 'f')
     {
       Serial.println("forward");
-      analogWrite(LPWM_Output1, 50);
+      analogWrite(LPWM_Output1, 100);
       analogWrite(RPWM_Output1, 0);
       analogWrite(LPWM_Output2, 35);
       analogWrite(RPWM_Output2, 0);
@@ -57,6 +61,19 @@ void loop()
       analogWrite(RPWM_Output2, 0);
     }
   }
-
+*/
+  if (r < 24000)
+  {
+    analogWrite(LPWM_Output1, 100);
+    analogWrite(RPWM_Output1, 0);
+  }
+  else
+  {
+    analogWrite(LPWM_Output1, 0);
+    analogWrite(RPWM_Output1, 0);
+  }
+  Serial.println(r);
 }
-
+void detect() {
+  r++;
+}

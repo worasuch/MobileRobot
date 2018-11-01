@@ -12,7 +12,7 @@ void setup()
 {
   Serial.begin(115200);   
   megaServo.attach(7, 8, 5, A4);
-  megaServo.write(90);
+  //megaServo.write(90);
 }
 
 void loop()
@@ -21,7 +21,7 @@ void loop()
   {
     int angle = Serial.parseInt();
     Serial.println(angle);
-    if(angle > 0 && angle < 180)
+    if(angle > 0 && angle < 200)
     {
       megaServo.write(angle);
     }

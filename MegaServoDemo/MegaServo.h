@@ -1,10 +1,10 @@
 #define MAX_SERVOS 2
 
 #define MIN_POT_VALUE 180
-#define MAX_POT_VALUE 800
+#define MAX_POT_VALUE 1000 //800
  
 #define MIN_ANGLE 10
-#define MAX_ANGLE 170
+#define MAX_ANGLE 200 //170
 
 typedef unsigned char uint8_t;
 
